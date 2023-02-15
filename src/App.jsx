@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { ethers } from 'ethers';
 import abi from './utils/FeedBack.json';
-
+import "./App.css";
 const provider = new ethers.providers.Web3Provider(window.ethereum);
 
 const contractAddress = '0xE3c248621Ee37c4E19F66d49D53e325A24a06e29'; 
@@ -31,7 +31,7 @@ function FeedbackForm() {
   }
 
   return (
-    <div className="mainSect">
+    <div className="main">
     <section className="gistArea">
        <header className="header">
             Welcome To Dgist Zone 🤗.
@@ -40,11 +40,11 @@ function FeedbackForm() {
 
       <h2>Trending Subject: <h4>Who do you think will win presidential election?</h4></h2>
       <form onSubmit={onSubmit}>
-        <label htmlFor="message">Feedback:</label>
+        <label htmlFor="message">Feedback:</label><br></br>
         <textarea id="message" name="message" rows="5" cols="40" />
         <button type="submit">Submit</button>
       </form>
-      <ul>
+      <ol>
         {feedbacks.map((feedback, index) => (
           <li key={index}>
             <p>Address: {feedback.sender}</p>
@@ -52,7 +52,7 @@ function FeedbackForm() {
             <p>Time: {new Date(feedback.timestamp * 1000).toLocaleString()}</p>
           </li>
         ))}
-      </ul></section>
+      </ol></section>
     </div>
   );
 }
@@ -67,7 +67,7 @@ function ConnectWalletButton() {
   }
 
   return (
-    <button onClick={connectWallet}>Connect Wallet</button>
+    <button onClick={connectWallet}>Connect Wallet to Contribute</button>
   );
 }
 
